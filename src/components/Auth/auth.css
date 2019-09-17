@@ -1,0 +1,15 @@
+.Auth {
+    height: 45vh;
+    width: 20vw;
+    background-color: #FFC493;
+    display: flex;
+    text-align: center;
+}
+
+.Tabs {
+    color: #F2F2F2;
+}
+
+.Tabs:hover {
+    color: #00739D;
+}

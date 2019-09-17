@@ -1,0 +1,12 @@
+nav {
+    margin: 0;
+    background-color: #ffca58;
+    color: whitesmoke;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 4em;
+    padding-left: 4em;
+}
