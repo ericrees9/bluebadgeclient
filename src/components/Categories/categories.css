@@ -1,5 +1,27 @@
 .mainDiv {
-    background-size: cover;
     height: 90vh;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.newShowHeader {
+    text-align: left;
+    text-size-adjust: auto;
+    font-size: 1000%;
+    transform: translate(-25px, -60px);
+}
+
+.searchHeader {
+    text-align: center;
+    font-size: 350%;
+    transform: translate(-5px, 25px);
+}
+
+.myProfileHeader {
+    text-align: right;
+    text-size-adjust: auto;
+    font-size: 500%;
+    transform: translate(20px, 50px);
 }

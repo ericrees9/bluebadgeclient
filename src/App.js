@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from "./components/Navbar/navbar";
 import Auth from "./components/Auth/auth";
 import Categories from "./components/Categories/categories";
 
 function App() {
-  const [token, setToken] = useState(false)
+  const [token, setToken] = useState("")
   const [signInCount, setSignInCount] = useState(0)
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken)
     setToken(newToken)
+    console.log(token)
   }
 
   const clearToken = () => {
@@ -36,10 +38,20 @@ function App() {
   return (
     <div className="App">
       <Navbar logout={ clearToken } tokenStatus={ token } />
-        <div className="mainDiv">
-        
-        { token === localStorage.getItem("token") ? <Categories /> : <Auth tokenHandler={ updateToken } /> }
+        <div className="appDiv">
+              <Router>
+                <Switch>
+                  
+                    <Route exact path="/" render={() => ( token === localStorage.getItem('token') ? 
+                      ( <Redirect to="/categories"/>
+                      ) : (
+                      <Auth tokenHandler={ updateToken } /> ) 
+                    )}/>
 
+                    <Route exact path="/categories" component={Categories} sessionToken={ token } />
+              
+              </Switch>
+            </Router>
         </div>
     </div>
   );

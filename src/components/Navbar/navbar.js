@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import LogoutBtn from "./Logout/logout";
+import LogoutBtn from "./LogoutBtn/logoutBtn";
 
 const Navbar = (props) => {
     return(
