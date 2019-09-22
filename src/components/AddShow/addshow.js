@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Switch } from 'react-router-dom';
 import "./addshow.css";
-import { Grid, Box, Button, FormField, Form, TextInput, Table, TableRow, TableCell, TableBody, MaskedInput } from "grommet";
+import { Grid, Box, Button, FormField, Form, TextInput, Table, TableRow, TableCell, TableBody } from "grommet";
 import { Image } from "grommet-icons";
 
 const AddShow = (props) => {
@@ -18,11 +18,11 @@ const AddShow = (props) => {
     const [ setList, setSetList] = useState("");
     const [ notes, setNotes] = useState("");
 
+    console.log(props.sessionToken);
+
     let submitShow = (e) => {
         e.preventDefault();
         let url = "https://concertbook.herokuapp.com/concert/create"
-
-        console.log(props.sessionToken);
 
         fetch(url, {
             method: "POST",
@@ -46,7 +46,22 @@ const AddShow = (props) => {
                     notes: notes
                 }
             })
-        }).then( res => res.json())
+        }).then((res) => res.json())
+        .then((concertData) => {
+            console.log(concertData);
+            setName("");
+            setDate("");
+            setStateLocation("");
+            setCityLocation("");
+            setVenue("");
+            setMainPerformer("");
+            setOpeningPerformer("");
+            setTourName("");
+            setLengthOfShow("");
+            setSeatInformation("");
+            setSetList("");
+            setNotes("");    
+        })
         .catch(err => console.error({message: err}))
     }
 
@@ -69,7 +84,7 @@ const AddShow = (props) => {
                             >
                                 <Box gridArea="details" background="light-1" overflow="hidden">
                                     <Box background={{ "color": "dark-3" }} size="small">
-                                        <h2>Show Details</h2>
+                                        <h2 className="showHeader">Show Details</h2>
                                     </Box>
                                     <Form>
                                         <Table>

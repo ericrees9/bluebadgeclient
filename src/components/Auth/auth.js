@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Route } from 'react-router-dom';
 import { Box, TextInput, Button, Tabs, Tab } from "grommet";
 import "./auth.css";
 import Categories from "../Categories/categories";
@@ -11,6 +11,7 @@ const Auth = (props) => {
     const [ firstName, setFirstName ] = useState("");
     const [ lastName, setLastName ] = useState("");
     const [ email, setEmail ] = useState("");
+    //const [token, setToken] = useState("")
 
     let changeLogin = (e) => {
         e.preventDefault();
@@ -22,6 +23,9 @@ const Auth = (props) => {
         setFirstName("")
         setLastName("")
     }
+
+    console.log(props.sessionTokenTest1)
+    console.log(props.sessionTokenTest2)
 
     let handleSignUp = (e) => {
         e.preventDefault();
@@ -119,7 +123,7 @@ const Auth = (props) => {
                                         }}
                                         type="submit"
                                         onClick={(e) => changeLogin(e)}
-                                        onClick={(e) => handleLogin(e)}
+                                        onClick={(event) => handleLogin(event)}
                                         
                                     />
                                 </React.Fragment>
@@ -168,13 +172,13 @@ const Auth = (props) => {
                                         }}
                                         type="submit"
                                         onClick={(e) => changeLogin(e)}
-                                        onClick={(e) => handleSignUp(e)}
+                                        onClick={(event) => handleSignUp(event)}
                                     />
                                 </React.Fragment>
                             </Tab>
                         </Tabs>
 
-                        <Route exact path="/categories" component={Categories} sessionToken={ props.sessionToken } />
+                        <Route exact path="/categories" component={Categories} sessionTokenTest2={ props.sessionToken } />
                     </div>
                 </Box>
         //     </Switch>

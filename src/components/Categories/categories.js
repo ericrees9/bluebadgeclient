@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Redirect, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import "./categories.css";
 import { Box, Grid } from "grommet";
 import AddShow from "../AddShow/addshow";
@@ -8,6 +8,8 @@ import ProfilePage from "../ProfilePage/profilepage";
 const Categories = (props) => {
     const [ active1, setActive1] = useState(false);
     const [ active2, setActive2] = useState(false);
+
+    console.log(props.sessionToken)
 
     return(
         <Router>
@@ -87,8 +89,8 @@ const Categories = (props) => {
                             </Grid>
                     </div>
                 </Route>
-                <Route exact path="/addshow" component={AddShow} sessionToken={ props.sessionToken } />
-                <Route exact path="/profilepage" component={ProfilePage} sessionToken={ props.sessionToken } />
+                <Route exact path="/addshow" component={AddShow}><AddShow sessionToken={ props.sessionToken } /></Route>
+                <Route exact path="/profilepage" component={ProfilePage}><ProfilePage sessionToken={ props.sessionToken } /></Route>
             </Switch>
         </Router>
     )

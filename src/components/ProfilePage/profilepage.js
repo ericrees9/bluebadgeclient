@@ -1,12 +1,15 @@
 import React from "react";
 import "./profilepage.css";
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Switch } from 'react-router-dom'
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
+    
+    console.log(props.sessionToken)
+    
     return(
         // <Router>
             <Switch>    
-                <h1>Papa can you hear me this is really stupid I cannot see my text.</h1>
+                <h1>My Profile</h1>
             </Switch>
         // </Router>
     );
